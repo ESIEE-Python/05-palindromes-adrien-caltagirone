@@ -1,16 +1,31 @@
+"""Module"""
 #### Fonction secondaire
+import unicodedata
 
-
-def ispalindrome(p):
-
-    # votre code ici
+def ispalindrome(string) -> bool:
+    """ Palindrome function """
     
-    return False
+
+    string = unicodedata.normalize('NFKD', string)
+    string = string.lower().replace(" ","")
+
+    if string == "":
+        return True
+
+    if len(string) == 1:
+        return True
+
+    if string[0] != string[-1]:
+        return False
+
+    return ispalindrome(string[1:-1])
+
 
 #### Fonction principale
 
 
 def main():
+    """ Main """
 
     # vos appels à la fonction secondaire ici
 
